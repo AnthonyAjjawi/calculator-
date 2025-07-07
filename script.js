@@ -17,102 +17,121 @@ console.log(num);
 //clear variable
 let clear = document.querySelector(".clear");
 
-//equal variable 
-let equal = document.querySelector(".equal");
+//equal variable
+let equals = document.querySelector(".equal");
 
+//stored number
+let storedNumber = "";
 
-
-
-
-
-
-//stored number 
-let storedNumber = " ";
-
-//result 
-let result = " ";
+//result
+let result = "";
 
 //number one
 let number1 = "";
 
-//number two
-let number2 = null;
+// //number two
+// let number2 = null;
 
-//operator 
+//operator
 let operator = null;
-
-
-
-
 
 //display zero for the beginning of the calculator
 currentNumber.textContent = 0;
 
-previousNumber.textContent = " ";
+previousNumber.textContent = "";
 
-
-
-
-
-//function to divide 
+//function to divide
 function divide(num1, num2) {
-    return num1 / num2;
+  return num1 / num2;
 }
-console.log(add(1, 2));
+
 
 //function to multiply
 function multiply(num1, num2) {
-    return num1 * num2;
+  return num1 * num2;
 }
-console.log(add(1, 2));
+
 
 //function to add
 function add(num1, num2) {
-    return num1 + num2;
+  return num1 + num2;
 }
-console.log(add(1, 2));
 
 
 //function to subtract
 function subtract(num1, num2) {
-    return num1 - num2;
+  return num1 - num2;
 }
-console.log(add(1, 2));
+
 
 function operate(num1, num2, operator) {
-    switch (operator) {
-        case "+":
-            return add(num1, num2);
-        break;
-        case "-":
-            return subtract(num1, num2);
-        break;
-        case "*":
-            return multiply(num1, num2);
-        break;
-        case "÷":
-            return divide(num1, num2);
-        break;
-    }
+  switch (operator) {
+    case "+":
+      return add(num1, num2);
+      break;
+    case "-":
+      return subtract(num1, num2);
+      break;
+    case "*":
+      return multiply(num1, num2);
+      break;
+    case "÷":
+      return divide(num1, num2);
+      break;
+  }
 }
 console.log(operate(1, 2));
 
-
 //populate the display
 
-    num.forEach(number  => {
-        number.addEventListener("click", function() {
-         storedNumber = number.value;
-         currentNumber.textContent = storedNumber;
-         console.log(currentNumber);
-        })
-    })
+num.forEach((number) => {
+  number.addEventListener("click", function () {
+    storedNumber += number.value;
+    currentNumber.textContent = storedNumber;
+    console.log(currentNumber);
+  });
+});
 
 
-op.forEach(op => {
-    op.addEventListener("click", function(){
-    
-        operator = op.textContent;
-        console.log(operator);
-    })
+
+equals.addEventListener("click", function(){
+    calculate();
 })
+
+
+
+op.forEach((op) => {
+
+  op.addEventListener("click", function () {
+    operator = op.textContent;
+    console.log(operator);
+    number1 = storedNumber;
+    console.log(number1)
+    previousNumber.textContent = storedNumber + operator;
+    storedNumber = "";
+    
+  });
+});
+
+equals.addEventListener("click", function(){
+    calculate();
+})
+
+clear.addEventListener("click", function(){
+    number1 = "";
+    storedNumber = "";
+    result = "";
+    operator = null;
+    currentNumber.textContent = 0;
+    previousNumber.textContent = "";
+    
+})
+
+function calculate() {
+    if(!number1 || !storedNumber || !operator) return;
+    result = operate(parseFloat(number1), parseFloat(storedNumber), operator);
+    currentNumber.textContent = result;
+    previousNumber.textContent = number1 + " " + operator + " " + storedNumber;
+    storedNumber = result.toString();
+    number1 = "";
+}
