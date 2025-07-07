@@ -22,6 +22,10 @@ let equal = document.querySelector(".equal");
 
 
 
+
+
+
+
 //stored number 
 let storedNumber = " ";
 
@@ -41,8 +45,10 @@ let operator = null;
 
 
 
+//display zero for the beginning of the calculator
+currentNumber.textContent = 0;
 
-
+previousNumber.textContent = " ";
 
 
 
@@ -93,13 +99,20 @@ console.log(operate(1, 2));
 
 
 //populate the display
-function populate() {
+
     num.forEach(number  => {
         number.addEventListener("click", function() {
-            storedNumber = number.value;
-            console.log(storedNumber);
-            currentNumber.textContent = storedNumber;
+         storedNumber = number.value;
+         currentNumber.textContent = storedNumber;
+         console.log(currentNumber);
         })
     })
-}
-console.log(populate());
+
+
+op.forEach(op => {
+    op.addEventListener("click", function(){
+    
+        operator = op.textContent;
+        console.log(operator);
+    })
+})
