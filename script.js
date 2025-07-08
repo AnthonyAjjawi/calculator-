@@ -14,11 +14,17 @@ console.log(op);
 let num = [...document.querySelectorAll(".num")];
 console.log(num);
 
+//decimal variable
+let decimal = document.querySelector(".decimal");
+console.log(decimal)
+
 //clear variable
 let clear = document.querySelector(".clear");
 
 //equal variable
 let equals = document.querySelector(".equal");
+
+
 
 //stored number
 let storedNumber = "";
@@ -28,6 +34,9 @@ let result = "";
 
 //number one
 let number1 = "";
+
+//number two
+let number2 = "";
 
 //operator
 let operator = null;
@@ -84,7 +93,32 @@ num.forEach(number => {
   number.addEventListener("click", function(){
     storedNumber += number.value;
     currentNumber.textContent = storedNumber;
-    storedNumber = "";
+    console.log(storedNumber);
+    
   })
 })
 
+op.forEach(op => {
+  op.addEventListener("click", function(){
+     
+   operator = op.value;
+   console.log(operator);
+
+    number1 = storedNumber;
+    storedNumber = "";
+    previousNumber.textContent = number1 + " " + operator;
+    currentNumber.textContent = "";
+    
+
+  })
+})
+
+equals.addEventListener("click", function(){
+  number2 = storedNumber;
+
+  result = operate(parseFloat(number1), parseFloat(number2), operator);
+  currentNumber.textContent = result;
+  previousNumber.textContent = number1 + " " + operator + " " + number2 + " =";
+  storedNumber = result.toString();
+  
+})
