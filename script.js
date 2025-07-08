@@ -1,8 +1,6 @@
-
 //button to change to theme
 const themeChange = document.querySelector(".changeTheme");
 const body = document.body;
-
 
 //previous number variable
 let previousNumber = document.querySelector(".previous__result");
@@ -50,32 +48,25 @@ currentNumber.textContent = 0;
 
 previousNumber.textContent = "";
 
-
 //change theme
-themeChange.addEventListener("click", function(){
+themeChange.addEventListener("click", function () {
   body.classList.toggle("dark-theme");
 
-  if(body.classList.contains("dark-theme")) {
-    localStorage.setItem("theme", "dark")
+  if (body.classList.contains("dark-theme")) {
+    localStorage.setItem("theme", "dark");
   } else {
     localStorage.setItem("theme", "light");
   }
-
 });
 
 window.onload = () => {
   const theme = localStorage.getItem("theme");
   if (theme === "dark-theme") {
-    body.classList.add("dark-theme")
+    body.classList.add("dark-theme");
   } else {
     body.classList.remove("dark-theme");
   }
-}
-
-
-
-
-
+};
 
 //function to divide
 function divide(num1, num2) {
@@ -135,21 +126,18 @@ op.forEach((op) => {
 equals.addEventListener("click", function () {
   number2 = storedNumber;
 
- 
-   if (operator === "÷" && parseFloat(number2) === 0) {
+  if (operator === "÷" && parseFloat(number2) === 0) {
     currentNumber.textContent = "Error";
     previousNumber.textContent = "";
     return;
   }
- 
- 
+
   result = operate(parseFloat(number1), parseFloat(number2), operator);
   currentNumber.textContent = result;
   previousNumber.textContent = number1 + " " + operator + " " + number2 + " =";
   storedNumber = result.toString();
   number1 = result;
-
-
+  currentNumber.textContent = storedNumber;
 });
 
 clear.addEventListener("click", function () {
@@ -166,8 +154,7 @@ clear.addEventListener("click", function () {
   operator = null;
 });
 
-
-decimal.addEventListener("click", function(){
+decimal.addEventListener("click", function () {
   if (!storedNumber.includes(".")) {
     storedNumber += ".";
     currentNumber.textContent = storedNumber;
