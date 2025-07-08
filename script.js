@@ -29,9 +29,6 @@ let result = "";
 //number one
 let number1 = "";
 
-// //number two
-// let number2 = null;
-
 //operator
 let operator = null;
 
@@ -83,55 +80,11 @@ function operate(num1, num2, operator) {
 console.log(operate(1, 2));
 
 //populate the display
-
-num.forEach((number) => {
-  number.addEventListener("click", function () {
+num.forEach(number => {
+  number.addEventListener("click", function(){
     storedNumber += number.value;
     currentNumber.textContent = storedNumber;
-    console.log(currentNumber);
-  });
-});
-
-
-
-equals.addEventListener("click", function(){
-    calculate();
-})
-
-
-
-op.forEach((op) => {
-
-  op.addEventListener("click", function () {
-    operator = op.textContent;
-    console.log(operator);
-    number1 = storedNumber;
-    console.log(number1)
-    previousNumber.textContent = storedNumber + operator;
     storedNumber = "";
-    
-  });
-});
-
-equals.addEventListener("click", function(){
-    calculate();
+  })
 })
 
-clear.addEventListener("click", function(){
-    number1 = "";
-    storedNumber = "";
-    result = "";
-    operator = null;
-    currentNumber.textContent = 0;
-    previousNumber.textContent = "";
-    
-})
-
-function calculate() {
-    if(!number1 || !storedNumber || !operator) return;
-    result = operate(parseFloat(number1), parseFloat(storedNumber), operator);
-    currentNumber.textContent = result;
-    previousNumber.textContent = number1 + " " + operator + " " + storedNumber;
-    storedNumber = result.toString();
-    number1 = "";
-}
