@@ -8,16 +8,19 @@
     <title>Calculator</title>
 </head>
 
-<body class="light-theme dark-theme">
-     
-    <button class="changeTheme">
-         <svg class="moon-icon" width="24" height="24" viewBox="0 0 24 24">
-        <path d="M12 3a9 9 0 009 9 9 9 0 00-9-9z" fill="currentColor"/>
-      </svg>
-    </button>
+<body class="dark-theme">
+
 
 
     <div class="calculator__container">
+        <div class="themeSetting">
+            <button class="themeChange icon-mask">
+                <img class="moon-icon" width="30" height="30"
+                    src="https://img.icons8.com/ios-glyphs/30/000000/moon-symbol.png" alt="moon" />
+
+            </button>
+        </div>
+
         <div class="output-clear-container">
             <div class="output">
                 <div class="previous__result"></div>
@@ -43,10 +46,12 @@
             <button class="equal">=</button>
             <button class="operator op">+</button>
         </div>
+
+
     </div>
 
 
- <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

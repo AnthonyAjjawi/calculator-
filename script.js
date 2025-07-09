@@ -1,6 +1,6 @@
 //button to change to theme
-const themeChange = document.querySelector(".changeTheme");
-const body = document.body;
+const themeChange = document.querySelector(".themeChange");
+const darkBody = document.body;
 
 //previous number variable
 let previousNumber = document.querySelector(".previous__result");
@@ -48,25 +48,11 @@ currentNumber.textContent = 0;
 
 previousNumber.textContent = "";
 
-//change theme
-themeChange.addEventListener("click", function () {
-  body.classList.toggle("dark-theme");
 
-  if (body.classList.contains("dark-theme")) {
-    localStorage.setItem("theme", "dark");
-  } else {
-    localStorage.setItem("theme", "light");
-  }
-});
+themeChange.addEventListener("click", function(){
+   darkBody.classList.toggle("dark-theme")
+})
 
-window.onload = () => {
-  const theme = localStorage.getItem("theme");
-  if (theme === "dark-theme") {
-    body.classList.add("dark-theme");
-  } else {
-    body.classList.remove("dark-theme");
-  }
-};
 
 //function to divide
 function divide(num1, num2) {

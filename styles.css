@@ -1,7 +1,33 @@
 :root {
     --bg-color: #fff;
     --text-color: #000;
-    --moon-color: #ccc;
+    --button-bg: #1d1c14;
+    --button-text: rgba(0, 0, 0, 0.8);
+    --output-bg: #fef9e7;
+    --output-text: #401a79;
+    --operator-bg: #f9e79f;
+    --operator-text: #1c1c1c;
+    --hover-dark: #34495e;
+    --hover-operator: #f7dc6f;
+}
+
+body.dark-theme {
+    --bg-color: #000;
+    --text-color: #fff;
+    --button-bg: #1d1c14;
+    --button-text: rgba(255, 255, 255, 0.9);
+    --output-bg: #2c3e50;
+    --output-text: #fef9e7;
+    --operator-bg: #f9e79f;
+    --operator-text: #1c1c1c;
+    --hover-dark: #34495e;
+    --hover-operator: #f7dc6f;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -10,44 +36,40 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #ffff;
-    color: #000;
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: sans-serif;
 }
-
-body.dark-theme{
-    background: #000;
-    color: #fff;
-}
-
-
 
 .calculator__container {
-    background: linear-gradient(to right, #00AAFF, #00FF6c);
-    padding: 10rem;
+    background: #555;
+    padding: 2rem;
     border: 2px solid #000;
     border-radius: 1rem;
 }
 
-button {
+.num, .operator, .clear, .equal, .decimal {
     padding: 2rem;
     margin: 0.5rem;
     width: 5rem;
-    background: #A2FFAF;
+    background: var(--button-bg);
+    color: var(--bg-color);
     border: 1px solid #000;
-    border: 0.5rem;
     cursor: pointer;
+    transition: background 0.2s ease;
 }
 
-button:hover {
-    background: #72e782;
+.num:hover, .equal:hover, .decimal:hover {
+    background: var(--hover-dark);
 }
 
-.op {
-    background: #87e4bd;
+.operator, .clear {
+    background: var(--operator-bg);
+    color: var(--operator-text);
 }
 
-.op:hover {
-    background: #53ad88;
+.operator:hover, .clear:hover {
+    background: var(--hover-operator);
 }
 
 .output-clear-container {
@@ -56,9 +78,9 @@ button:hover {
 }
 
 .output {
-    flex: 1 ;
-    height: 3rem;
-    background: #c2fcca;
+    flex: 1;
+    height: 5rem;
+    background: var(--output-bg);
     border: 2px solid #000;
     display: flex;
     justify-content: flex-end;
@@ -66,15 +88,35 @@ button:hover {
     flex-direction: column;
     padding: 0.5rem;
     margin: 0.5rem;
+    color: var(--output-text);
 }
-
 
 .previous__result {
     font-size: 0.8rem;
     padding-bottom: 0.5rem;
-    color: #401a79;
 }
 
 .current__result {
     font-size: 1rem;
+}
+
+.themeSetting {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.themeChange, img {
+    background: transparent;
+    border-radius: 50%;
+    padding: 0.1rem;
+    border: none;
+}
+
+.themeChange img {
+    filter: invert(1);
+}
+
+body:not(.dark-theme) .themeChange img {
+    filter: none;
 }
