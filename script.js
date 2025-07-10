@@ -74,6 +74,12 @@ function subtract(num1, num2) {
   return num1 - num2;
 }
 
+//function to modulo
+function modulo(num1, num2) {
+  return num1 % num2;
+}
+
+//function to switch between different operators
 function operate(num1, num2, operator) {
   switch (operator) {
     case "+":
@@ -84,9 +90,11 @@ function operate(num1, num2, operator) {
       return multiply(num1, num2);
     case "÷":
       return divide(num1, num2);
+    case "%":
+      return modulo(num1, num2);
   }
 }
-console.log(operate(1, 2));
+
 
 //populate the display
 num.forEach((number) => {
